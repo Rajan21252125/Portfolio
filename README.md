@@ -35,13 +35,13 @@ This portfolio website showcases my skills, projects, and professional journey a
 
 ## Demo
 
-You can see the live demo of the portfolio website [here](https://your-portfolio-url.com).
+You can see the live demo of the portfolio website [here](https://portfolio-rajan.netlify.app/).
 
 ## Installation
 
 To run the project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/YourGitHubUsername/YourPortfolio.git`
+1. Clone the repository: `git clone https://github.com/Rajan21252125/Portfolio.git`
 2. Navigate to the project directory: `cd YourPortfolio`
 3. Install dependencies: `npm install`
 
