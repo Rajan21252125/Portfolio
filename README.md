@@ -30,8 +30,8 @@ This portfolio website showcases my skills, projects, and professional journey a
 - React JS
 - Tailwind CSS
 - React Player (for video previews)
-- ...
-- ...
+- React Simple Typewriter
+- React Icons
 
 ## Demo
 

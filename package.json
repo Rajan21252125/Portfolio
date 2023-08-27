@@ -17,7 +17,6 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-player": "^2.12.0",
-    "react-responsive-carousel": "^3.2.23",
     "react-scroll": "^1.8.9",
     "react-simple-typewriter": "^5.0.1"
   },
