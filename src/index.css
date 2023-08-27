@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.underline-with-space {
+  position: relative;
+  display: inline-block;
+}
+.card {
+  background: white;
+  transition: transform 0.4s ease;
+  position: relative;
+ }
+ .card:hover{
+  transform: scale(1.04) rotate(1deg);
+ }
+ 
+ .shadow1 {
+  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+              0 0  0 2px rgb(190, 190, 190),
+              0.3em 0.3em 1em rgba(0,0,0,0.3);
+ }
+ 
+ 
+.underline-with-space::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; /* Adjust this value to control the space between the line and the word */
+  left: 0;
+  width: 100%;
+  height: 4px; /* Adjust this value to control the thickness of the line */
+  background-color: #16A34A; /* Adjust the color of the line */
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #16A34A #DFE9EB;
+  }
+  
+  
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #16A34A;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #62A34B;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #62A34B;
+  }
