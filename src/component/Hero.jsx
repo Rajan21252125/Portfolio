@@ -79,7 +79,7 @@ export default function Hero() {
             <BsLinkedin className="h-auto w-5 text-blue-700 transo hover:scale-125" />
           </a>
           <a
-            href="https://github.com/Rajan21252125?tab=repositories"
+            href="https://github.com/Rajan21252125"
             target="_blank"
             rel="noopener noreferrer"
           >

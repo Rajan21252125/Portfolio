@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+import {BsGithub} from 'react-icons/bs'
 import { Link } from "react-scroll"; // Import Link from react-scroll
 import Hero from "./Hero";
 import Skills from "./Skills";
@@ -24,12 +25,12 @@ const Navbar = () => {
               className="text-white text-2xl font-semibold cursor-pointer"
               smooth={true}
             >
-              My<span className="text-green-500">Portfolio</span>
+              RA<span className="text-green-500">JAN</span>
             </Link>
           </div>
           {/* Nav-Links */}
           <div className="right flex space-x-2 justify-center items-center md:space-x-4">
-            <div className="hidden md:block">
+            <div className="hidden md:block order-1">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navLinks.map((link) => (
                   <Link // Use Link from react-scroll
@@ -45,7 +46,7 @@ const Navbar = () => {
               </div>
             </div>
             {/* HumBurger Button */}
-            <div className="-mr-2 flex md:hidden sticky top-0">
+            <div className="-mr-2 flex md:hidden sticky top-0 order-3">
               <button
                 onClick={() => setOpen(!open)}
                 type="button"
@@ -61,7 +62,11 @@ const Navbar = () => {
                 )}
               </button>
             </div>
-
+            
+            <a className="text-white text-base hover:bg-white cursor-pointer hover:border hover:border-green-500 hover:text-green-500 transition-all duration-500 px-3 py-2 rounded-md font-medium flex items-center space-x-2 order-2" href="https://github.com/Rajan21252125/Portfolio" target="_blank" rel="noopener noreferrer">
+              <BsGithub className="text-lg"/>
+              <h1 className="hidden lg:block">Github</h1>
+            </a>
             {/* <FaSun className='text-white text-xl'/> */}
             {/* <FaMoon className='text-white text-xl hover:bg-white hover:border hover:border-green-500 hover:text-green-500 transition-all duration-500 p-2 h-8 w-8 rounded-lg'/> */}
           </div>
