@@ -9,9 +9,9 @@ export default function Project() {
       title: "FoodBox",
       url: "project.mkv",
       image: "project.png",
-      tools: ["React", "Node", "SCSS", "Python", "Flask", "Express", "Machine Learning"],
+      tools: ["React", "SCSS", "Redux"],
       description:
-        "Food waste is a significant problem, and many people struggle with figuring out what to do with their leftover ingredients. A user Interface for this project link given below......",
+        "FoodBox is a feature-rich food delivery application built with React.js, Tailwind CSS, and Redux Toolkit. Offering seamless navigation, precise geolocation services, and a diverse selection of cuisines sourced from the Swiggy API, FoodBox ensures a delightful culinary experience for users.",
       projectUrl: "https://foodbox-rajan.netlify.app/",
       githubUrl: "https://github.com/Rajan21252125/FoodBox.git",
     },
