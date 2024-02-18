@@ -15,7 +15,7 @@ const Footer = () => {
             <FaEnvelope className="text-2xl hover:text-green-500" />
           </a>
         </div>
-        <p className="text-sm mb-2">© 2023 Your Name. All rights reserved.</p>
+        <p className="text-sm mb-2">© 2024 Rajan Gupta. All rights reserved.</p>
         <p className="text-sm">Built with ❤️ using React and Tailwind CSS</p>
       </div>
     </footer>
