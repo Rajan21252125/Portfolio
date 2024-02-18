@@ -8,7 +8,7 @@ export default function Project() {
     {
       title: "FoodBox",
       url: "project.mkv",
-      image: "Project1.png",
+      image: "project.png",
       tools: ["React", "Node", "SCSS", "Python", "Flask", "Express", "Machine Learning"],
       description:
         "Food waste is a significant problem, and many people struggle with figuring out what to do with their leftover ingredients. A user Interface for this project link given below......",
