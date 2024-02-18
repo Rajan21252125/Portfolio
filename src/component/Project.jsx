@@ -6,6 +6,16 @@ export default function Project() {
   const [projectsToShow, setProjectsToShow] = useState(2);
   const allProjects = [
     {
+      title: "FoodBox",
+      url: "project.mkv",
+      image: "Project1.png",
+      tools: ["React", "Node", "SCSS", "Python", "Flask", "Express", "Machine Learning"],
+      description:
+        "Food waste is a significant problem, and many people struggle with figuring out what to do with their leftover ingredients. A user Interface for this project link given below......",
+      projectUrl: "https://foodbox-rajan.netlify.app/",
+      githubUrl: "https://github.com/Rajan21252125/FoodBox.git",
+    },
+    {
       title: "LeftOver Food Recommendation",
       url: "project1.mp4",
       image: "Project1.png",
@@ -56,7 +66,7 @@ export default function Project() {
       tools: ["React JS", "Node", "Bootstrap", "JWT", "Express"],
       description:
         "Developed iNoteBook, a full-stack web app with React JS frontend and Node backend. Utilized Bootstrap for styling, JWT for authentication, and Express for API.",
-      projectUrl: "",
+      projectUrl: "https://i-notes-rajan.netlify.app/",
       githubUrl: "https://github.com/Rajan21252125/iNotes",
     },
 
@@ -70,7 +80,6 @@ export default function Project() {
       projectUrl: "",
       githubUrl: "https://github.com/Rajan21252125/Text-Utils",
     },
-    // ...
   ];
 
   const toggleProjects = () => {
