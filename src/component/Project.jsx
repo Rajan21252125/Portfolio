@@ -8,16 +8,6 @@ export default function Project() {
 
   const allProjects = [
     {
-      title: "AquaSleri",
-      url: "project.mkv",
-      image: "project.webp",
-      tools: ["React", "SCSS", "Redux"],
-      description:
-        "FoodBox is a feature-rich food delivery application built with React.js, Tailwind CSS, and Redux Toolkit. Offering seamless navigation, precise geolocation services, and a diverse selection of cuisines sourced from the Swiggy API, FoodBox ensures a delightful culinary experience for users.",
-      projectUrl: "https://aquasleri.stranger2125.me/",
-      githubUrl: "https://github.com/Rajan21252125/FoodBox.git",
-    },
-    {
       title: "FoodBox",
       url: "project.mkv",
       image: "project.webp",
@@ -48,7 +38,16 @@ export default function Project() {
       projectUrl: "https://ai-summarizers.netlify.app/",
       githubUrl: "https://github.com/Rajan21252125/AI_Summarizers/tree/main",
     },
-
+    {
+      title: "AquaSleri",
+      url: "",
+      image: "",
+      tools: ["React", "SCSS", "Redux"],
+      description:
+        "You can see the project video by clicking on the project link below. This is a project that I have done for my client. This is a project of a water purifier company. In this project, I have used React, SCSS, and Redux.",
+      projectUrl: "https://aquasleri.stranger2125.me/",
+      githubUrl: "https://github.com/Rajan21252125/FoodBox.git",
+    },
     {
       title: "NewsApp",
       url: "project3.mp4",
@@ -111,9 +110,9 @@ export default function Project() {
           name="keywords"
           content="React projects, portfolio, web development, Redux, Tailwind CSS, frontend development, backend development"
         />
-        <meta name="author" content="Your Name" />
+        <meta name="author" content="Rajan Gupta" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://yourwebsite.com/projects" />
+        <link rel="canonical" href="https://stranger2125.me/#projects" />
       </Helmet>
 
       {/* Heading */}
@@ -137,7 +136,7 @@ export default function Project() {
               } max-w-[500px]`}
             >
               <ReactPlayer
-                url={`img/${project.url}`}
+                url={`img/${project?.url}`}
                 controls
                 width="100%"
                 height="100%"
@@ -145,7 +144,7 @@ export default function Project() {
                 playing={true}
                 light={
                   <img
-                    src={`img/${project.image}`}
+                    src={`img/${project?.image}`}
                     alt={`Video poster for ${project.title}`}
                     style={{ width: "600px", height: "250px" }}
                   />
