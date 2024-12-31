@@ -1,10 +1,22 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
+import { Helmet } from "react-helmet";
 
 export default function Project() {
   const [projectsToShow, setProjectsToShow] = useState(2);
+
   const allProjects = [
+    {
+      title: "AquaSleri",
+      url: "project.mkv",
+      image: "project.png",
+      tools: ["React", "SCSS", "Redux"],
+      description:
+        "FoodBox is a feature-rich food delivery application built with React.js, Tailwind CSS, and Redux Toolkit. Offering seamless navigation, precise geolocation services, and a diverse selection of cuisines sourced from the Swiggy API, FoodBox ensures a delightful culinary experience for users.",
+      projectUrl: "https://aquasleri.stranger2125.me/",
+      githubUrl: "https://github.com/Rajan21252125/FoodBox.git",
+    },
     {
       title: "FoodBox",
       url: "project.mkv",
@@ -88,17 +100,41 @@ export default function Project() {
 
   return (
     <div id="projects">
-      <div className="heading flex flex-col justify-center items-center text-3xl font-semibold mt-10">
-        <div className="underline-with-space">Projects</div>
-      </div>
-      <div className="mx-4 lg:mx-36 mt-8">
+      {/* Helmet for SEO */}
+      <Helmet>
+        <title>Projects Portfolio | Showcasing My Work</title>
+        <meta
+          name="description"
+          content="Explore a curated list of my projects, including AquaSleri, FoodBox, and more. Built using cutting-edge tools like React, Redux, and Tailwind CSS."
+        />
+        <meta
+          name="keywords"
+          content="React projects, portfolio, web development, Redux, Tailwind CSS, frontend development, backend development"
+        />
+        <meta name="author" content="Your Name" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://yourwebsite.com/projects" />
+      </Helmet>
+
+      {/* Heading */}
+      <header className="heading flex flex-col justify-center items-center text-3xl font-semibold mt-10">
+        <h1 className="underline-with-space">
+          <span>Projects</span>
+        </h1>
+      </header>
+
+      {/* Projects Section */}
+      <section className="projects mx-4 lg:mx-36 mt-8">
         {allProjects.slice(0, projectsToShow).map((project, index) => (
-          <div
+          <article
             key={index}
             className="flex flex-col lg:flex-row shadow1 p-6 rounded-lg mb-6"
           >
+            {/* Project Media */}
             <div
-              className={`lg:${index % 2 !== 0 ? "order-2" : ""} max-w-[500px]`}
+              className={`lg:${
+                index % 2 !== 0 ? "order-2" : ""
+              } max-w-[500px]`}
             >
               <ReactPlayer
                 url={`img/${project.url}`}
@@ -110,63 +146,72 @@ export default function Project() {
                 light={
                   <img
                     src={`img/${project.image}`}
-                    alt={`Video Poster for ${project.title}`}
+                    alt={`Video poster for ${project.title}`}
                     style={{ width: "600px", height: "250px" }}
                   />
                 }
               />
             </div>
+
+            {/* Project Details */}
             <div className="flex flex-col items-start lg:mx-10 space-y-3">
               <h2 className="lg:text-2xl text-xl mt-3 lg:mt-0 font-semibold border-b-4 border-green-500">
                 {project.title}
               </h2>
-              <h4 className="lg:text-xl text-lg font-semibold">Tools Used</h4>
-              <div className="tools flex flex-wrap space-x-2">
+              <h3 className="lg:text-xl text-lg font-semibold">Tools Used</h3>
+              <ul className="tools flex flex-wrap space-x-2">
                 {project.tools.map((tool, index) => (
-                  <span
+                  <li
                     key={index}
                     className="bg-green-500 text-white my-1 md:my-0 px-2 py-1 rounded-lg text-sm hover:bg-green-600 cursor-pointer"
                   >
                     {tool}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <p className="lg:text-base text-sm lg:font-normal">
                 {project.description}
               </p>
               <div className="btn space-x-2">
-                <a
-                  href={project.projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`bg-green-500 py-2 px-4 rounded-lg text-white inline-block ${!project.projectUrl ? "opacity-50 cursor-not-allowed" : "hover:bg-green-600"}`}
-                  disabled={!project.projectUrl}
-                >
-                  View Project
-                </a>
+                {project.projectUrl ? (
+                  <a
+                    href={project.projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-500 py-2 px-4 rounded-lg text-white hover:bg-green-600"
+                  >
+                    View Project
+                  </a>
+                ) : (
+                  <span className="bg-gray-400 py-2 px-4 rounded-lg text-white cursor-not-allowed">
+                    Project Link Unavailable
+                  </span>
+                )}
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 py-2 px-4 rounded-lg text-white cursor-pointer hover:bg-green-600"
                 >
-                  Code
+                  View Code
                 </a>
               </div>
             </div>
-          </div>
+          </article>
         ))}
+
+        {/* Load More Button */}
         {projectsToShow < allProjects.length && (
           <div className="text-center mt-4">
             <button
               onClick={toggleProjects}
-              className="bg-green-500 py-2 px-4 rounded-lg text-white"
+              className="bg-green-500 py-2 px-4 rounded-lg text-white hover:bg-green-600"
             >
-              Read More
+              Load More Projects
             </button>
           </div>
         )}
-      </div>
+      </section>
     </div>
   );
 }
