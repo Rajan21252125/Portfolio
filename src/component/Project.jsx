@@ -10,7 +10,7 @@ export default function Project() {
     {
       title: "AquaSleri",
       url: "project.mkv",
-      image: "project.png",
+      image: "project.webp",
       tools: ["React", "SCSS", "Redux"],
       description:
         "FoodBox is a feature-rich food delivery application built with React.js, Tailwind CSS, and Redux Toolkit. Offering seamless navigation, precise geolocation services, and a diverse selection of cuisines sourced from the Swiggy API, FoodBox ensures a delightful culinary experience for users.",
@@ -20,7 +20,7 @@ export default function Project() {
     {
       title: "FoodBox",
       url: "project.mkv",
-      image: "project.png",
+      image: "project.webp",
       tools: ["React", "SCSS", "Redux"],
       description:
         "FoodBox is a feature-rich food delivery application built with React.js, Tailwind CSS, and Redux Toolkit. Offering seamless navigation, precise geolocation services, and a diverse selection of cuisines sourced from the Swiggy API, FoodBox ensures a delightful culinary experience for users.",
@@ -30,7 +30,7 @@ export default function Project() {
     {
       title: "LeftOver Food Recommendation",
       url: "project1.mp4",
-      image: "Project1.png",
+      image: "Project1.webp",
       tools: ["React", "Node", "SCSS", "Python", "Flask", "Express", "Machine Learning"],
       description:
         "Food waste is a significant problem, and many people struggle with figuring out what to do with their leftover ingredients. A user Interface for this project link given below......",
@@ -41,7 +41,7 @@ export default function Project() {
     {
       title: "AI Website Summarizers",
       url: "project2.mp4",
-      image: "project2.png",
+      image: "project2.webp",
       tools: ["React Js", "Tailwind CSS", "API from Rapid API"],
       description:
         "Crafted an AI-driven website summarization tool using React and Tailwind CSS, enabling users to quickly extract key insights from web content.",
@@ -52,7 +52,7 @@ export default function Project() {
     {
       title: "NewsApp",
       url: "project3.mp4",
-      image: "project3.png",
+      image: "project3.webp",
       tools: ["React JS", "Bootstrap 5", "API from News API"],
       description:
         "Developed a NewsApp using React and Bootstrap 5, fetching real-time news using the News API for staying updated.",
@@ -63,7 +63,7 @@ export default function Project() {
     {
       title: "Youtube Clone",
       url: "project4.mp4",
-      image: "project4.png",
+      image: "project4.webp",
       tools: ["React JS", "Tailwind CSS", "API from Rapid API"],
       description:
         "Built a Youtube Clone using React and Tailwind CSS, utilizing the Rapid API for dynamic content. Aiming to replicate the familiar features of Youtube.",
@@ -74,7 +74,7 @@ export default function Project() {
     {
       title: "iNoteBook",
       url: "project5.mp4",
-      image: "project5.png",
+      image: "project5.webp",
       tools: ["React JS", "Node", "Bootstrap", "JWT", "Express"],
       description:
         "Developed iNoteBook, a full-stack web app with React JS frontend and Node backend. Utilized Bootstrap for styling, JWT for authentication, and Express for API.",
@@ -85,7 +85,7 @@ export default function Project() {
     {
       title: "Text-Utils",
       url: "project6.mp4",
-      image: "project6.png",
+      image: "project6.webp",
       tools: ["React JS", "Bootrap 5"],
       description:
         "Crafted Text-Utils, a React JS application with Bootstrap 5 for text manipulation tasks. Simplifies tasks like text conversion, case modification, and more.",
