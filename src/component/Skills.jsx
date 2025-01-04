@@ -36,31 +36,31 @@ export default function Skills() {
             <SkillBar
               icon={<BiLogoHtml5 color="#ff6347" />}
               skill="HTML"
-              proficiency={90}
+              proficiency={"90%"}
               color="bg-orange-600"
             />
             <SkillBar
               icon={<BiLogoCss3 color="#1e90ff" />}
               skill="CSS"
-              proficiency={70}
+              proficiency={"70%"}
               color="bg-blue-700"
             />
             <SkillBar
               icon={<BiLogoJavascript color="#f0db4f" />}
               skill="JavaScript"
-              proficiency={60}
+              proficiency={"60%"}
               color="bg-yellow-500"
             />
             <SkillBar
               icon={<BiLogoReact color="#61DAFB" />}
               skill="React"
-              proficiency={70}
+              proficiency={"70%"}
               color="bg-blue-400"
             />
             <SkillBar
               icon={<BiLogoTailwindCss color="#38B2AC" />}
               skill="Tailwind CSS"
-              proficiency={90}
+              proficiency={"90%"}
               color="bg-blue-800"
             />
           </article>
@@ -76,13 +76,13 @@ export default function Skills() {
             <SkillBar
               icon={<BiLogoNodejs />}
               skill="Node.js"
-              proficiency={60}
+              proficiency={"60%"}
               color="bg-green-700"
             />
             <SkillBar
               icon={<SiExpress />}
               skill="Express.js"
-              proficiency={80}
+              proficiency={"80%"}
               color="bg-orange-600"
             />
             <SkillBar
@@ -90,13 +90,13 @@ export default function Skills() {
                 <img className="w-9" src="img/python.webp" alt="Python Icon" />
               }
               skill="Python"
-              proficiency={50}
+              proficiency={"50%"}
               color="bg-blue-500"
             />
             <SkillBar
               icon={<FaPhp />}
               skill="PHP"
-              proficiency={30}
+              proficiency={"30%"}
               color="bg-purple-800"
             />
           </article>
@@ -133,10 +133,10 @@ const SkillBar = ({ icon, skill, proficiency, color }) => (
       aria-label={`${skill} skill proficiency`}
     >
       <div
-        className={`progress w-[${proficiency}%] h-[10px] ${color} rounded-lg`}
+        className={`progress w-[${proficiency}] h-[10px] ${color} rounded-lg`}
       >
         <span className="lg:hidden group-hover:block absolute text-[12px] right-0 top-3 bg-gray-500 font-semibold text-white rounded-md p-1">
-          {proficiency}%
+          {proficiency}
         </span>
       </div>
     </div>
