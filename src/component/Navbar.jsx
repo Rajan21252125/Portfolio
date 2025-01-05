@@ -50,7 +50,17 @@ const Navbar = () => {
                 ))}
               </div>
             </div>
-
+            {/* GitHub Link */}
+            <a
+              className="text-white text-base hover:bg-white cursor-pointer hover:border hover:border-green-500 hover:text-green-500 transition-all duration-500 px-3 py-2 rounded-md font-medium flex items-center space-x-2"
+              href="https://github.com/Rajan21252125/Portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Portfolio GitHub repository"
+            >
+              <BsGithub className="text-lg" />
+              <span className="hidden lg:block">GitHub</span>
+            </a>
             {/* Hamburger Button */}
             <div className="-mr-2 flex md:hidden">
               <button
@@ -68,18 +78,6 @@ const Navbar = () => {
                 )}
               </button>
             </div>
-
-            {/* GitHub Link */}
-            <a
-              className="text-white text-base hover:bg-white cursor-pointer hover:border hover:border-green-500 hover:text-green-500 transition-all duration-500 px-3 py-2 rounded-md font-medium flex items-center space-x-2"
-              href="https://github.com/Rajan21252125/Portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View Portfolio GitHub repository"
-            >
-              <BsGithub className="text-lg" />
-              <span className="hidden lg:block">GitHub</span>
-            </a>
           </div>
         </div>
       </div>
@@ -87,7 +85,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {open && (
         <div className="md:hidden" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 absolute top-16 right-0 z-50 bg-black">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

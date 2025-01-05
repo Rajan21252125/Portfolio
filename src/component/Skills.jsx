@@ -37,30 +37,35 @@ export default function Skills() {
               icon={<BiLogoHtml5 color="#ff6347" />}
               skill="HTML"
               proficiency={"90%"}
+              proficiencyBarWidth = {"w-[90%]"}
               color="bg-orange-600"
             />
             <SkillBar
               icon={<BiLogoCss3 color="#1e90ff" />}
               skill="CSS"
               proficiency={"70%"}
+              proficiencyBarWidth = {"w-[70%]"}
               color="bg-blue-700"
             />
             <SkillBar
               icon={<BiLogoJavascript color="#f0db4f" />}
               skill="JavaScript"
               proficiency={"60%"}
+              proficiencyBarWidth = {"w-[60%]"}
               color="bg-yellow-500"
             />
             <SkillBar
               icon={<BiLogoReact color="#61DAFB" />}
               skill="React"
               proficiency={"70%"}
+              proficiencyBarWidth = {"w-[70%]"}
               color="bg-blue-400"
             />
             <SkillBar
               icon={<BiLogoTailwindCss color="#38B2AC" />}
               skill="Tailwind CSS"
               proficiency={"90%"}
+              proficiencyBarWidth = {"w-[90%]"}
               color="bg-blue-800"
             />
           </article>
@@ -77,12 +82,14 @@ export default function Skills() {
               icon={<BiLogoNodejs />}
               skill="Node.js"
               proficiency={"60%"}
+              proficiencyBarWidth = {"w-[60%]"}
               color="bg-green-700"
             />
             <SkillBar
               icon={<SiExpress />}
               skill="Express.js"
               proficiency={"80%"}
+              proficiencyBarWidth = {"w-[80%]"}
               color="bg-orange-600"
             />
             <SkillBar
@@ -91,12 +98,14 @@ export default function Skills() {
               }
               skill="Python"
               proficiency={"50%"}
+              proficiencyBarWidth = {"w-[50%]"}
               color="bg-blue-500"
             />
             <SkillBar
               icon={<FaPhp />}
               skill="PHP"
               proficiency={"30%"}
+              proficiencyBarWidth = {"w-[30%]"}
               color="bg-purple-800"
             />
           </article>
