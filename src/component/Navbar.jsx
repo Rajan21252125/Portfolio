@@ -2,34 +2,29 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
-import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "hero" },
-    { name: "Skills", href: "skills" },
-    { name: "Projects", href: "projects" },
+    { name: "Home", href: "#hero" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
   ];
 
   return (
-    <nav
-      className="bg-black sticky top-0 z-50"
-      aria-label="Primary Navigation"
-    >
+    <nav className="bg-black sticky top-0 z-50" aria-label="Primary Navigation">
       <div className="mx-auto px-4 lg:mx-28 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link
-              to="hero"
+            <a
+              href="#hero"
               className="text-white text-2xl font-semibold cursor-pointer"
-              smooth={true}
               aria-label="Navigate to Home section"
             >
               RA<span className="text-green-500">JAN</span>
-            </Link>
+            </a>
           </div>
 
           {/* Navigation Links */}
@@ -37,16 +32,14 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.name}
-                    to={link.href}
-                    smooth={true}
-                    duration={500}
+                    href={link.href}
                     className="text-white hover:bg-white cursor-pointer hover:border hover:border-green-500 hover:text-green-500 transition-all duration-500 px-3 py-2 rounded-md text-sm font-medium"
                     aria-label={`Navigate to ${link.name} section`}
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
@@ -87,16 +80,14 @@ const Navbar = () => {
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 absolute top-16 right-0 z-50 bg-black">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                to={link.href}
-                smooth={true}
-                duration={500}
+                href={link.href}
                 className="text-white hover:bg-white/40 transition-all duration-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                 aria-label={`Navigate to ${link.name} section`}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

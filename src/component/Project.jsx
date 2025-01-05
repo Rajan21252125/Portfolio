@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
-import { Helmet } from "react-helmet";
 
 export default function Project() {
   const [projectsToShow, setProjectsToShow] = useState(2);
@@ -99,22 +98,6 @@ export default function Project() {
 
   return (
     <div id="projects">
-      {/* Helmet for SEO */}
-      <Helmet>
-        <title>Projects Portfolio | Showcasing My Work</title>
-        <meta
-          name="description"
-          content="Explore a curated list of my projects, including AquaSleri, FoodBox, and more. Built using cutting-edge tools like React, Redux, and Tailwind CSS."
-        />
-        <meta
-          name="keywords"
-          content="React projects, portfolio, web development, Redux, Tailwind CSS, frontend development, backend development"
-        />
-        <meta name="author" content="Rajan Gupta" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://stranger2125.me/#projects" />
-      </Helmet>
-
       {/* Heading */}
       <header className="heading flex flex-col justify-center items-center text-3xl font-semibold mt-10">
         <h1 className="underline-with-space">

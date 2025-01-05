@@ -4,6 +4,10 @@
 
 
 
+
+html {
+  scroll-behavior: smooth;
+}
 .underline-with-space {
   position: relative;
   display: inline-block;
