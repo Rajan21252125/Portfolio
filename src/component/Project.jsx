@@ -22,8 +22,8 @@ export default function Project() {
       image: "Project1.webp",
       tools: ["React", "Node", "SCSS", "Python", "Flask", "Express", "Machine Learning"],
       description:
-        "Food waste is a significant problem, and many people struggle with figuring out what to do with their leftover ingredients. A user Interface for this project link given below......",
-      projectUrl: "https://leftover-strangers.netlify.app/",
+        "Food waste is a significant problem, and many people struggle with figuring out what to do with their leftover ingredients. Leftover Food Recommendation is a web application that provides a solution to this problem by suggesting recipes based on the leftover ingredients.",
+      projectUrl: "https://indian-left-over.vercel.app/",
       githubUrl: "https://github.com/Rajan21252125/LeftOver",
     },
 
