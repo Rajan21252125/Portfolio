@@ -94,7 +94,7 @@ export default function Skills() {
             />
             <SkillBar
               icon={
-                <img className="w-9" src="img/python.webp" alt="Python Icon" />
+                <img className="w-9" src="img/python.webp" alt="Python Icon" loading="lazy"/>
               }
               skill="Python"
               proficiency={"50%"}

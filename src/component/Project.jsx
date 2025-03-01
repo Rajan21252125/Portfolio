@@ -129,6 +129,7 @@ export default function Project() {
                   <img
                     src={`img/${project?.image}`}
                     alt={`Video poster for ${project.title}`}
+                    loading="lazy"
                     style={{ width: "600px", height: "250px" }}
                   />
                 }

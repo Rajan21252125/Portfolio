@@ -30,11 +30,13 @@ export default function Hero() {
           className="h-96 lg:h-[660px]"
           src="img/bg.webp"
           alt="Background illustration"
+          loading="lazy"
         />
         <img
           className="absolute translate-x-4 translate-y-9 lg:translate-y-12 h-64 lg:h-[600px] mb-12"
           src="img/face.webp"
           alt="Rajan Gupta"
+          loading="lazy"
         />
       </div>
 

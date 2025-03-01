@@ -9,7 +9,7 @@ export default function About() {
       </h1>
       <div className="left mt-10">
         <div className="w-64">
-          <img src="img/face.png" alt="" />
+          <img src="img/face.png" alt="face" loading="lazy"/>
         </div>
       </div>
       <div className="right">
