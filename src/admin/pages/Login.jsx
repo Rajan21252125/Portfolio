@@ -5,7 +5,7 @@ import Loading from "../components/Loading";
 import { useAuth } from "../../contexts/AuthContext";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "";
-const LOGO = "../../public/icons8-portfolio-48.png";
+const LOGO = "/icons8-portfolio-48.png";
 
 export default function Login() {
   const [email, setEmail] = React.useState("");

@@ -49,7 +49,7 @@ export default function ConfirmPopup({
             ) : (
               <div className={`w-14 h-14 rounded-md flex items-center justify-center ${accent}`}>
                 <img
-                  src="../../public/icons8-portfolio-48.png"
+                  src="/icons8-portfolio-48.png"
                   alt="default icon"
                   className="w-14 h-14 rounded-md object-cover"
                 />

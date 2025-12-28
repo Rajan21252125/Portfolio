@@ -3,7 +3,7 @@ import React from "react";
 import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import Loading from "./Loading";
 
-const LOGO = "../../public/icons8-portfolio-48.png";
+const LOGO = "/icons8-portfolio-48.png";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
@@ -64,8 +64,8 @@ export default function AdminLayout() {
     show ? (
       <Link
         to={to}
-        className={`text-white hover:bg-white cursor-pointer hover:border hover:border-green-500 hover:text-green-500 transition-all duration-500 px-3 py-2 rounded-md text-sm font-medium ${
-          isActive(to) ? "bg-white text-green-400 border border-green-500" : "text-jet-black"
+        className={` hover:bg-white cursor-pointer hover:border hover:border-green-500 hover:text-green-500 transition-all duration-500 px-3 py-2 rounded-md text-sm font-medium ${
+          isActive(to) ? "bg-white text-green-400 border border-green-500" : "text-white"
         }`}
         onClick={() => setMobileOpen(false)}
       >

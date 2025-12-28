@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "";
-const LOGO = "../../public/icons8-portfolio-48.png";
+const LOGO = "/icons8-portfolio-48.png";
 
 export default function Dashboard() {
   const [stats, setStats] = React.useState(null);
