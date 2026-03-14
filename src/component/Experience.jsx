@@ -1,29 +1,14 @@
 import React from "react";
 import { FaBriefcase, FaLaptopCode, FaExternalLinkAlt } from "react-icons/fa";
 
+import { usePortfolio } from "../contexts/PortfolioContext";
+
 export default function Experience() {
-  const experiences = [
-    {
-      id: 1,
-      role: "Software Engineer",
-      company: "Zeus Learning",
-      duration: "June 2024 - Present",
-      description:
-        "Contributing to the development of robust and scalable software solutions. Collaborating with cross-functional teams to design, implement, and optimize features. Focused on delivering high-quality code, enhancing system performance, and maintaining best practices in modern web development.",
-      icon: <FaBriefcase />,
-      link: null,
-    },
-    {
-      id: 2,
-      role: "Web Developer",
-      company: "Real Estate Client Project",
-      duration: "Recent",
-      description:
-        "Spearheaded the development of a comprehensive real estate platform leveraging Next.js. Implemented dynamic property listings, advanced filtering, and a highly responsive user interface to ensure a seamless property browsing experience across all devices.",
-      icon: <FaLaptopCode />,
-      link: "https://marrkfeetrealty.in/",
-    },
-  ];
+  const { profileData } = usePortfolio();
+
+  const experiences = profileData?.experiences || [];
+
+  if (experiences.length === 0) return null;
 
   return (
     <div id="experience" className="pt-20 pb-10">
@@ -39,7 +24,7 @@ export default function Experience() {
             <div key={exp.id} className="relative pl-8 md:pl-16 group">
               {/* Timeline Dot with Icon */}
               <div className="absolute -left-[26px] md:-left-[26px] top-6 w-12 h-12 bg-gray-900 border-4 border-green-500 rounded-full flex items-center justify-center text-white text-xl z-10 transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(34,197,94,0.6)]">
-                {exp.icon}
+                {exp.iconName === "FaLaptopCode" ? <FaLaptopCode /> : <FaBriefcase />}
               </div>
 
               {/* Experience Card - Stunning Dark Theme */}

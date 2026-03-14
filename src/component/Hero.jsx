@@ -9,10 +9,15 @@ import {
 } from "react-icons/bs";
 import { Typewriter } from "react-simple-typewriter";
 import { FiMail } from "react-icons/fi";
+import { usePortfolio } from "../contexts/PortfolioContext";
 
 export default function Hero() {
+  const { profileData, loading } = usePortfolio();
+
+  if (loading || !profileData) return null; // or empty spacer before data loads
+
   const handleDownload = () => {
-    const downloadLink = "img/Resume-Rajan Gupta.pdf";
+    const downloadLink = profileData?.pdf_url || "img/Resume-Rajan Gupta.pdf";
     window.open(downloadLink, "_blank");
   };
 
@@ -33,9 +38,9 @@ export default function Hero() {
           loading="lazy"
         />
         <img
-          className="absolute translate-x-4 translate-y-9 lg:translate-y-12 h-64 lg:h-[600px] mb-12"
-          src="img/face.webp"
-          alt="Rajan Gupta"
+          className="absolute translate-x-4 translate-y-9 lg:translate-y-12 h-64 lg:h-[600px] mb-12 rounded-full object-cover"
+          src={profileData?.profile_picture_url || "img/face.webp"}
+          alt={profileData?.name || "Rajan Gupta"}
           loading="lazy"
         />
       </div>
@@ -49,23 +54,20 @@ export default function Hero() {
         <h1 className="text-3xl md:text-4xl font-bold leading-10">
           I am{" "}
           <span className="text-green-500">
-            <Typewriter
-              words={[
-                "Web Developer",
-                "Python Developer",
-                "MERN Stack Developer",
-              ]}
-              cursor
-              loop={false}
-              cursorStyle="|"
-            />
+            {profileData?.roles?.length > 0 ? (
+              <Typewriter
+                words={profileData.roles}
+                cursor
+                loop={false}
+                cursorStyle="|"
+              />
+            ) : (
+              "Developer"
+            )}
           </span>
         </h1>
-        <p className="text-sm md:text-base text-black my-4">
-          Hi there! I'm Rajan Gupta, a passionate web developer with a flair for
-          creating user-friendly and visually appealing websites. My expertise
-          includes Python development, MERN stack projects, and innovative
-          solutions. Let's collaborate and bring your ideas to life!
+        <p className="text-sm md:text-base text-black my-4 whitespace-pre-wrap">
+          {profileData?.about || "Hi there! I'm Rajan Gupta, a passionate web developer..."}
         </p>
         <div className="flex space-x-8">
           <a href="mailto:grajan408@gmail.com">
@@ -88,39 +90,47 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Social Media Icons */}
-        <div className="flex space-x-4 mt-8" aria-label="Social Media Links">
+      {/* Social Media Icons */}
+      <div className="flex space-x-4 mt-8" aria-label="Social Media Links">
+        {profileData?.urls?.linkedin && (
           <a
-            href="https://www.linkedin.com/in/rajan-gupta-141991215/"
+            href={profileData.urls.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit my LinkedIn profile"
           >
             <BsLinkedin className="h-auto w-5 text-blue-700 hover:scale-125" />
           </a>
+        )}
+        {profileData?.urls?.github && (
           <a
-            href="https://github.com/Rajan21252125"
+            href={profileData.urls.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit my GitHub profile"
           >
             <BsGithub className="h-auto w-5 text-black hover:scale-125" />
           </a>
+        )}
+        {profileData?.urls?.whatsapp && (
           <a
-            href="https://wa.me/918104205417"
+            href={profileData.urls.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with me on WhatsApp"
           >
             <BsWhatsapp className="h-auto w-5 text-green-800 hover:scale-125" />
           </a>
+        )}
+        {profileData?.gmail && (
           <a
-            href="mailto:grajan408@gmail.com"
+            href={`mailto:${profileData.gmail}`}
             aria-label="Send me an email"
           >
             <FiMail className="h-auto w-5 text-red-700 hover:scale-125" />
           </a>
-        </div>
+        )}
+      </div>
       </div>
     </section>
   );

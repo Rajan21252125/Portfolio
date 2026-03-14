@@ -14,7 +14,31 @@ import {
 import { SiExpress } from "react-icons/si";
 import { FaPhp } from "react-icons/fa";
 
+import { usePortfolio } from "../contexts/PortfolioContext";
+
+// Icon Map
+const iconMap = {
+  BiLogoHtml5: <BiLogoHtml5 color="#ff6347" />,
+  BiLogoCss3: <BiLogoCss3 color="#1e90ff" />,
+  BiLogoJavascript: <BiLogoJavascript color="#f0db4f" />,
+  BiLogoReact: <BiLogoReact color="#61DAFB" />,
+  BiLogoTailwindCss: <BiLogoTailwindCss color="#38B2AC" />,
+  BiLogoNodejs: <BiLogoNodejs />,
+  SiExpress: <SiExpress />,
+  FaPhp: <FaPhp />,
+};
+
 export default function Skills() {
+  const { profileData } = usePortfolio();
+
+  const skillsData = profileData?.skills_data || [];
+  
+  if (skillsData.length === 0) return null;
+
+  const frontend = skillsData.find(s => s.category.includes("Frontend"));
+  const backend = skillsData.find(s => s.category.includes("Backend"));
+  const professional = skillsData.find(s => s.category.includes("Professional") || s.category.includes("Soft"));
+
   return (
     <div id="skills">
       <section className="skills-section">
@@ -26,107 +50,66 @@ export default function Skills() {
 
         <div className="skills-container flex p-10 space-y-3 h-full flex-col lg:flex-row justify-between lg:mx-24">
           {/* Frontend Skills */}
-          <article
-            className="frontend-skills shadow1 rounded-lg p-8 flex flex-col justify-center items-center lg:w-[48%]"
-            aria-label="Frontend Skills"
-          >
-            <h3 className="text-md font-semibold text-green-500 lg:text-2xl">
-              Frontend <span className="text-black">Skills</span>
-            </h3>
-            <SkillBar
-              icon={<BiLogoHtml5 color="#ff6347" />}
-              skill="HTML"
-              proficiency={"90%"}
-              proficiencyBarWidth = {"w-[90%]"}
-              color="bg-orange-600"
-            />
-            <SkillBar
-              icon={<BiLogoCss3 color="#1e90ff" />}
-              skill="CSS"
-              proficiency={"70%"}
-              proficiencyBarWidth = {"w-[70%]"}
-              color="bg-blue-700"
-            />
-            <SkillBar
-              icon={<BiLogoJavascript color="#f0db4f" />}
-              skill="JavaScript"
-              proficiency={"60%"}
-              proficiencyBarWidth = {"w-[60%]"}
-              color="bg-yellow-500"
-            />
-            <SkillBar
-              icon={<BiLogoReact color="#61DAFB" />}
-              skill="React"
-              proficiency={"70%"}
-              proficiencyBarWidth = {"w-[70%]"}
-              color="bg-blue-400"
-            />
-            <SkillBar
-              icon={<BiLogoTailwindCss color="#38B2AC" />}
-              skill="Tailwind CSS"
-              proficiency={"90%"}
-              proficiencyBarWidth = {"w-[90%]"}
-              color="bg-blue-800"
-            />
-          </article>
+          {frontend && frontend.items.length > 0 && (
+            <article
+              className="frontend-skills shadow1 rounded-lg p-8 flex flex-col justify-center items-center lg:w-[48%]"
+              aria-label="Frontend Skills"
+            >
+              <h3 className="text-md font-semibold text-green-500 lg:text-2xl mb-4">
+                Frontend <span className="text-black">Skills</span>
+              </h3>
+              {frontend.items.map((skill, index) => (
+                <SkillBar
+                  key={index}
+                  icon={skill.iconUrl ? <img className="w-9" src={skill.iconUrl} alt={skill.name} loading="lazy" /> : iconMap[skill.iconName] || null}
+                  skill={skill.name}
+                  proficiency={skill.proficiency}
+                  proficiencyBarWidth={`w-[${skill.proficiency}]`}
+                  color={skill.color}
+                />
+              ))}
+            </article>
+          )}
 
           {/* Backend Skills */}
-          <article
-            className="backend-skills shadow1 p-8 flex flex-col justify-center items-center lg:w-[48%] rounded-lg"
-            aria-label="Backend Skills"
-          >
-            <h3 className="text-md font-semibold text-green-500 lg:text-2xl">
-              Backend <span className="text-black">Skills</span>
-            </h3>
-            <SkillBar
-              icon={<BiLogoNodejs />}
-              skill="Node.js"
-              proficiency={"60%"}
-              proficiencyBarWidth = {"w-[60%]"}
-              color="bg-green-700"
-            />
-            <SkillBar
-              icon={<SiExpress />}
-              skill="Express.js"
-              proficiency={"80%"}
-              proficiencyBarWidth = {"w-[80%]"}
-              color="bg-orange-600"
-            />
-            <SkillBar
-              icon={
-                <img className="w-9" src="img/python.webp" alt="Python Icon" loading="lazy"/>
-              }
-              skill="Python"
-              proficiency={"50%"}
-              proficiencyBarWidth = {"w-[50%]"}
-              color="bg-blue-500"
-            />
-            <SkillBar
-              icon={<FaPhp />}
-              skill="PHP"
-              proficiency={"30%"}
-              proficiencyBarWidth = {"w-[30%]"}
-              color="bg-purple-800"
-            />
-          </article>
+          {backend && backend.items.length > 0 && (
+            <article
+              className="backend-skills shadow1 p-8 flex flex-col justify-center items-center lg:w-[48%] rounded-lg mt-8 lg:mt-0"
+              aria-label="Backend Skills"
+            >
+              <h3 className="text-md font-semibold text-green-500 lg:text-2xl mb-4">
+                Backend <span className="text-black">Skills</span>
+              </h3>
+              {backend.items.map((skill, index) => (
+                <SkillBar
+                  key={index}
+                  icon={skill.iconUrl ? <img className="w-9" src={skill.iconUrl} alt={skill.name} loading="lazy" /> : iconMap[skill.iconName] || null}
+                  skill={skill.name}
+                  proficiency={skill.proficiency}
+                  proficiencyBarWidth={`w-[${skill.proficiency}]`}
+                  color={skill.color}
+                />
+              ))}
+            </article>
+          )}
         </div>
 
         {/* Soft Skills */}
-        <section
-          className="soft-skills mx-4 lg:space-x-16 p-8 space-y-14 px-10 shadow1 lg:p-10 lg:mx-36 rounded-lg"
-          aria-label="Soft Skills"
-        >
-          <h3 className="text-2xl text-green-500 text-center font-bold w-[75vw]">
-            Professional <span className="mx-2 text-black">Skills</span>
-          </h3>
-          <div className="flex flex-wrap justify-center gap-14">
-            <SoftSkill skill="Creativity" proficiency={80} />
-            <SoftSkill skill="Communication" proficiency={70} />
-            <SoftSkill skill="Team Work" proficiency={85} />
-            <SoftSkill skill="Project Management" proficiency={90} />
-            <SoftSkill skill="Problem Solving" proficiency={75} />
-          </div>
-        </section>
+        {professional && professional.items.length > 0 && (
+          <section
+            className="soft-skills mx-4 lg:space-x-16 p-8 space-y-14 px-10 shadow1 lg:p-10 lg:mx-36 rounded-lg my-10"
+            aria-label="Soft Skills"
+          >
+            <h3 className="text-2xl text-green-500 text-center font-bold lg:w-[75vw]">
+              Professional <span className="mx-2 text-black">Skills</span>
+            </h3>
+            <div className="flex flex-wrap justify-center gap-14">
+              {professional.items.map((skill, index) => (
+                <SoftSkill key={index} skill={skill.name} proficiency={parseInt(skill.proficiency, 10) || 0} />
+              ))}
+            </div>
+          </section>
+        )}
       </section>
     </div>
   );

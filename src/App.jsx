@@ -22,24 +22,27 @@ const AdminProfileEdit = React.lazy(() => import("./admin/pages/ProfileEdit"));
 const AdminPending = React.lazy(() => import("./admin/pages/AdminPending"));
 const AdminLogin = React.lazy(() => import("./admin/pages/Login"));
 
-/* -- Auth & Protection -- */
+/* -- Contexts -- */
 import { AuthProvider } from "./contexts/AuthContext";
+import { PortfolioProvider } from "./contexts/PortfolioContext";
 import RequireAdmin from "./component/RequireAdmin";
 import Loading from "./admin/components/Loading";
 
 /* Public Home Layout */
 function PublicHome() {
   return (
-    <div className="bg-green-100">
-      <Navbar />
-      <main>
-        <Hero />
-        <Skills />
-        <Experience />
-        <Project />
-      </main>
-      <Footer />
-    </div>
+    <PortfolioProvider>
+      <div className="bg-green-100">
+        <Navbar />
+        <main>
+          <Hero />
+          <Skills />
+          <Experience />
+          <Project />
+        </main>
+        <Footer />
+      </div>
+    </PortfolioProvider>
   );
 }
 
