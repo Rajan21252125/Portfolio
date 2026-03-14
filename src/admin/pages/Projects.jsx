@@ -5,8 +5,8 @@ import Loading from "../components/Loading";
 import ConfirmPopup from "../components/ConfirmPopup";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "";
-// local uploaded logo (used as fallback thumbnail)
-const FALLBACK_IMG = "/mnt/data/8ffc2624-e0d1-4ac2-837a-29a0c7700757.png";
+// Local uploaded logo (used as fallback thumbnail) or keep it empty
+const FALLBACK_IMG = "/img/project.webp";
 
 export default function Projects() {
   const [projects, setProjects] = React.useState([]);
@@ -170,9 +170,9 @@ export default function Projects() {
                   </div>
 
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {(p.tools || p.tools?.length) ? (p.tools.map((t, i) => (
+                    {Array.isArray(p.tools) ? p.tools.map((t, i) => (
                       <span key={i} className="text-xs px-2 py-1 bg-indigo-50 text-indigo-800 rounded">{t}</span>
-                    ))) : null}
+                    )) : null}
                   </div>
 
                   <div className="mt-4 flex items-center justify-between gap-3">
