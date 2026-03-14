@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./component/Navbar";
 import Hero from "./component/Hero";
 import Skills from "./component/Skills";
+import Experience from "./component/Experience";
 import Project from "./component/Project";
 import Footer from "./component/Footer";
 
@@ -34,6 +35,7 @@ function PublicHome() {
       <main>
         <Hero />
         <Skills />
+        <Experience />
         <Project />
       </main>
       <Footer />
