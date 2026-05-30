@@ -11,14 +11,17 @@ import { Typewriter } from "react-simple-typewriter";
 import { FiMail } from "react-icons/fi";
 import { usePortfolio } from "../contexts/PortfolioContext";
 
+const API_BASE = import.meta.env.VITE_API_BASE || "";
+const RESUME_VIEW_URL = `${API_BASE}/profile/resume`;
+
 export default function Hero() {
   const { profileData, loading } = usePortfolio();
 
   if (loading || !profileData) return null; // or empty spacer before data loads
 
   const handleDownload = () => {
-    const downloadLink = profileData?.pdf_url || "img/Resume-Rajan Gupta.pdf";
-    window.open(downloadLink, "_blank");
+    const resumeLink = profileData?.pdf_url ? RESUME_VIEW_URL : "img/Resume-Rajan Gupta.pdf";
+    window.open(resumeLink, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -81,7 +84,7 @@ export default function Hero() {
           <button
             className="bg-white border border-green-500 px-6 rounded-lg font-bold flex items-center"
             onClick={handleDownload}
-            aria-label="Download Resume"
+            aria-label="View Resume"
           >
             <span className="mr-2">
               <BsDownload className="text-green-500 font-bold text-lg" />

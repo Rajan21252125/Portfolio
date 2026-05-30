@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 import ConfirmPopup from "../components/ConfirmPopup";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "";
+const RESUME_VIEW_URL = `${API_BASE}/profile/resume`;
 
 export default function ProfileEdit() {
   const [form, setForm] = React.useState({
@@ -362,7 +363,7 @@ export default function ProfileEdit() {
                 </div>
                 <div className="mt-2 text-sm text-gray-600">
                   {form.pdf_url ? (
-                    <a href={form.pdf_url} target="_blank" rel="noreferrer" className="underline text-royal-blue">
+                    <a href={RESUME_VIEW_URL} target="_blank" rel="noreferrer" className="underline text-royal-blue">
                       View uploaded resume
                     </a>
                   ) : (

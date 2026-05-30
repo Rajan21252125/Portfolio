@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "";
 const LOGO_PATH = "/mnt/data/8ffc2624-e0d1-4ac2-837a-29a0c7700757.png";
+const RESUME_VIEW_URL = `${API_BASE}/profile/resume`;
 
 export default function Profile() {
   const [profile, setProfile] = React.useState(null);
@@ -140,8 +141,8 @@ export default function Profile() {
                 </Link>
 
                 {pdf_url ? (
-                  <a href={pdf_url} target="_blank" rel="noreferrer" className="text-sm underline text-jet-black w-8 px-2 py-1" aria-label="Download Resume"
-                    title="Download Resume">
+                  <a href={RESUME_VIEW_URL} target="_blank" rel="noreferrer" className="text-sm underline text-jet-black w-8 px-2 py-1" aria-label="View Resume"
+                    title="View Resume">
                     📄
                   </a>
                 ) : (

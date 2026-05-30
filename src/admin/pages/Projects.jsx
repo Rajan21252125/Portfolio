@@ -18,6 +18,10 @@ export default function Projects() {
   const [confirmConfig, setConfirmConfig] = React.useState({});
   const [pendingAction, setPendingAction] = React.useState(null); // { type, projectId }
 
+  // drag & drop state
+  const [draggedId, setDraggedId] = React.useState(null);
+  const [reordering, setReordering] = React.useState(false);
+
   async function fetchProjects() {
     setLoading(true);
     setError(null);
@@ -108,6 +112,55 @@ export default function Projects() {
     });
   };
 
+  // drag start handler
+  const handleDragStart = (e, projectId) => {
+    setDraggedId(projectId);
+    e.dataTransfer.effectAllowed = "move";
+  };
+
+  // drag over handler
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+  };
+
+  // drop handler
+  const handleDrop = async (e, targetProjectId) => {
+    e.preventDefault();
+    if (!draggedId || draggedId === targetProjectId) {
+      setDraggedId(null);
+      return;
+    }
+
+    try {
+      setReordering(true);
+      // find the new position (index) of target project
+      const targetIndex = projects.findIndex(p => p.id === targetProjectId);
+      
+      const res = await fetch(`${API_BASE}/projects/reorder`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ projectId: draggedId, newPosition: targetIndex }),
+      });
+
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        throw new Error(json.message || `Failed to reorder (${res.status})`);
+      }
+
+      const data = await res.json();
+      setProjects(data.projects || []);
+      setError(null);
+    } catch (err) {
+      console.error(err);
+      setError(String(err));
+    } finally {
+      setDraggedId(null);
+      setReordering(false);
+    }
+  };
+
   if (loading) return <Loading fullscreen text="Loading projects..." />;
 
   return (
@@ -146,10 +199,25 @@ export default function Projects() {
             <p className="text-gray-600">No projects found. Click <Link to="/admin/projects/create" className="underline text-royal-blue">Create Project</Link> to add your first project.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <p className="text-sm text-gray-600 mb-4">💡 Drag & drop to reorder projects</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((p) => (
-              <article key={p.id} className="bg-white rounded-lg shadow overflow-hidden flex flex-col">
-                <div className="h-44 bg-gray-100 flex items-center justify-center">
+              <article 
+                key={p.id} 
+                draggable
+                onDragStart={(e) => handleDragStart(e, p.id)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, p.id)}
+                className={`bg-white rounded-lg shadow overflow-hidden flex flex-col cursor-move transition-all ${
+                  draggedId === p.id ? 'opacity-50' : ''
+                } ${draggedId && draggedId !== p.id ? 'hover:shadow-lg' : ''}`}
+              >
+                <div className="h-44 bg-gray-100 flex items-center justify-center relative">
+                  {/* Drag handle */}
+                  <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
+                    ⋮⋮
+                  </div>
                   <img
                     src={p.image_url || p.imageUrl || FALLBACK_IMG}
                     alt={p.name}
@@ -221,6 +289,7 @@ export default function Projects() {
                 </div>
               </article>
             ))}
+            </div>
           </div>
         )}
       </div>
