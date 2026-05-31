@@ -27,25 +27,21 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col md:items-center lg:justify-between lg:flex-row lg:mx-16 xl:mx:24 md:px-16"
+      className="flex min-h-[calc(100vh-4rem)] flex-col md:items-center lg:justify-between lg:flex-row lg:mx-16 xl:mx-24 md:px-16 py-10 lg:py-0"
     >
       {/* Image Section */}
       <div
-        className="flex justify-center lg:order-2 items-center mb-10"
+        className="flex justify-center lg:order-2 items-center mb-10 lg:mb-0 w-full lg:w-1/2"
         aria-labelledby="hero-image"
       >
-        <img
-          className="h-96 lg:h-[660px]"
-          src="img/bg.webp"
-          alt="Background illustration"
-          loading="lazy"
-        />
-        <img
-          className="absolute translate-x-4 translate-y-9 lg:translate-y-12 h-64 lg:h-[600px] mb-12 rounded-full object-cover"
-          src={profileData?.profile_picture_url || "img/face.webp"}
-          alt={profileData?.name || "Rajan Gupta"}
-          loading="lazy"
-        />
+        <div className="relative aspect-square w-[min(82vw,420px)] sm:w-[min(70vw,500px)] lg:w-[min(44vw,680px)] overflow-hidden rounded-full">
+          <img
+            className="absolute inset-x-0 bottom-0 mx-auto h-[92%] w-[88%] object-contain object-bottom"
+            src={profileData?.profile_picture_url || "img/face.webp"}
+            alt={profileData?.name || "Rajan Gupta"}
+            loading="lazy"
+          />
+        </div>
       </div>
 
       {/* Content Section */}
