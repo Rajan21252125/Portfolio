@@ -25,24 +25,36 @@ const AdminLogin = React.lazy(() => import("./admin/pages/Login"));
 /* -- Contexts -- */
 import { AuthProvider } from "./contexts/AuthContext";
 import { PortfolioProvider, usePortfolio } from "./contexts/PortfolioContext";
+import { ThemeProvider, useTheme, DESIGN_MODES } from "./contexts/ThemeContext";
 import RequireAdmin from "./component/RequireAdmin";
 import Loading from "./admin/components/Loading";
+
+/* -- New Design Components -- */
+import PublicHomeNew from "./component/PublicHomeNew";
+import DesignToggle from "./component/DesignToggle";
 
 /* Public Home Layout */
 function PublicHome() {
   return (
-    <PortfolioProvider>
-      <PublicHomeContent />
-    </PortfolioProvider>
+    <ThemeProvider>
+      <PortfolioProvider>
+        <PublicHomeContent />
+      </PortfolioProvider>
+    </ThemeProvider>
   );
 }
 
 /* Content Component with Loading State */
 function PublicHomeContent() {
   const { loading } = usePortfolio();
+  const { designMode, isNewDesign } = useTheme();
   
   if (loading) {
     return <Loading text="Loading portfolio..." />;
+  }
+
+  if (isNewDesign) {
+    return <PublicHomeNew />;
   }
 
   return (
@@ -55,6 +67,7 @@ function PublicHomeContent() {
         <Project />
       </main>
       <Footer />
+      <DesignToggle />
     </div>
   );
 }
