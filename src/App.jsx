@@ -25,37 +25,21 @@ const AdminLogin = React.lazy(() => import("./admin/pages/Login"));
 /* -- Contexts -- */
 import { AuthProvider } from "./contexts/AuthContext";
 import { PortfolioProvider, usePortfolio } from "./contexts/PortfolioContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import RequireAdmin from "./component/RequireAdmin";
 import Loading from "./admin/components/Loading";
+
+/* -- Wrappers -- */
+import PublicHomeWrapper from "./component/PublicHomeWrapper";
 
 /* Public Home Layout */
 function PublicHome() {
   return (
-    <PortfolioProvider>
-      <PublicHomeContent />
-    </PortfolioProvider>
-  );
-}
-
-/* Content Component with Loading State */
-function PublicHomeContent() {
-  const { loading } = usePortfolio();
-  
-  if (loading) {
-    return <Loading text="Loading portfolio..." />;
-  }
-
-  return (
-    <div className="bg-green-100">
-      <Navbar />
-      <main>
-        <Hero />
-        <Skills />
-        <Experience />
-        <Project />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <PortfolioProvider>
+        <PublicHomeWrapper />
+      </PortfolioProvider>
+    </ThemeProvider>
   );
 }
 

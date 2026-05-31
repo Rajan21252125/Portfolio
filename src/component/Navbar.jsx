@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
+import DesignToggle from "./DesignToggle";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -55,6 +56,7 @@ const Navbar = () => {
               <BsGithub className="text-lg" />
               <span className="hidden lg:block">GitHub</span>
             </a>
+            <DesignToggle compact />
             {/* Hamburger Button */}
             <div className="-mr-2 flex md:hidden">
               <button
@@ -90,6 +92,7 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <DesignToggle />
           </div>
         </div>
       )}

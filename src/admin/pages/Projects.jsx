@@ -114,7 +114,7 @@ export default function Projects() {
 
   // drag start handler
   const handleDragStart = (e, projectId) => {
-    setDraggedId(projectId);
+    setDraggedId(Number(projectId));
     e.dataTransfer.effectAllowed = "move";
   };
 
@@ -127,7 +127,9 @@ export default function Projects() {
   // drop handler
   const handleDrop = async (e, targetProjectId) => {
     e.preventDefault();
-    if (!draggedId || draggedId === targetProjectId) {
+    const numericTargetProjectId = Number(targetProjectId);
+
+    if (!draggedId || draggedId === numericTargetProjectId) {
       setDraggedId(null);
       return;
     }
@@ -135,13 +137,16 @@ export default function Projects() {
     try {
       setReordering(true);
       // find the new position (index) of target project
-      const targetIndex = projects.findIndex(p => p.id === targetProjectId);
+      const targetIndex = projects.findIndex(p => Number(p.id) === numericTargetProjectId);
+      if (targetIndex < 0) {
+        throw new Error("Could not find drop target project");
+      }
       
       const res = await fetch(`${API_BASE}/projects/reorder`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ projectId: draggedId, newPosition: targetIndex }),
+        body: JSON.stringify({ projectId: Number(draggedId), newPosition: Number(targetIndex) }),
       });
 
       if (!res.ok) {

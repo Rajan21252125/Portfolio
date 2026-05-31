@@ -28,6 +28,31 @@ const iconMap = {
   FaPhp: <FaPhp />,
 };
 
+const tailwindColorToHex = {
+  "bg-orange-600": "#ea580c",
+  "bg-blue-700": "#1d4ed8",
+  "bg-yellow-500": "#eab308",
+  "bg-blue-400": "#60a5fa",
+  "bg-blue-800": "#1e40af",
+  "bg-green-700": "#15803d",
+  "bg-blue-500": "#3b82f6",
+  "bg-purple-800": "#6b21a8",
+};
+
+const toHexColor = (color) => {
+  if (!color) return "#16a34a";
+  if (color.startsWith("#")) return color;
+  return tailwindColorToHex[color] || "#16a34a";
+};
+
+const parseProficiency = (proficiency) => {
+  const value = typeof proficiency === "number"
+    ? proficiency
+    : parseInt(String(proficiency || "0").replace("%", ""), 10);
+
+  return Number.isFinite(value) ? Math.max(0, Math.min(value, 100)) : 0;
+};
+
 export default function Skills() {
   const { profileData } = usePortfolio();
 
@@ -64,7 +89,6 @@ export default function Skills() {
                   icon={skill.iconUrl ? <img className="w-9" src={skill.iconUrl} alt={skill.name} loading="lazy" /> : iconMap[skill.iconName] || null}
                   skill={skill.name}
                   proficiency={skill.proficiency}
-                  proficiencyBarWidth={`w-[${skill.proficiency}]`}
                   color={skill.color}
                 />
               ))}
@@ -86,7 +110,6 @@ export default function Skills() {
                   icon={skill.iconUrl ? <img className="w-9" src={skill.iconUrl} alt={skill.name} loading="lazy" /> : iconMap[skill.iconName] || null}
                   skill={skill.name}
                   proficiency={skill.proficiency}
-                  proficiencyBarWidth={`w-[${skill.proficiency}]`}
                   color={skill.color}
                 />
               ))}
@@ -125,7 +148,11 @@ const SkillBar = ({ icon, skill, proficiency, color }) => (
       aria-label={`${skill} skill proficiency`}
     >
       <div
-        className={`progress w-[${proficiency}] h-[10px] ${color} rounded-lg`}
+        className="progress h-[10px] rounded-lg"
+        style={{
+          width: `${parseProficiency(proficiency)}%`,
+          backgroundColor: toHexColor(color),
+        }}
       >
         <span className="lg:hidden group-hover:block absolute text-[12px] right-0 top-3 bg-gray-500 font-semibold text-white rounded-md p-1">
           {proficiency}
